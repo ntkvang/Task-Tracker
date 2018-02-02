@@ -1,0 +1,217 @@
+<!-- Breadcrumbs-->
+<div class="card-header" ng-controller="CreateTaskCtrl">
+    <div class="card-body">
+        <menu type="toolbar" class="action-bar" style="float: right;" ng-init="showAdd=false" id="listbar">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+                <i class="fa fa-plus"></i>Add
+            </button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalLong">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>Delete
+            </button>
+            <button type="button" class="btn btn-primary ">
+                <i class="fa fa-search" aria-hidden="true"></i>Search
+            </button>
+        </menu>
+        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+            <tr>
+                <th><input type="checkbox" ng-model="selctedAll" ng-click="checkAll()"/></th>
+                <th>STT</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Assigner</th>
+                <th>Start date</th>
+                <th>Due date</th>
+                <th>Project name</th>
+                <th>Color</th>
+                <th>Status</th>
+                <th>Tags</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="task in tasks">
+                <td><input type="checkbox"></td>
+                <td>{{$index+1}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.Description}}</td>
+                <td>{{task.Assigner}}</td>
+                <td>{{task.Startdate}}</td>
+                <td>{{task.Duedate}}</td>
+                <td>{{task.projectname}}</td>
+                <td>{{task.Color}}</td>
+                <td>{{task.Status}}</td>
+                <td>{{task.Tags}}</td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalLong">
+                        <i class="fa fa-trash-o"></i>Delete
+                    </button>
+                    <button type="button" class="btn btn-warning btn-sm"  data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-pencil"></i>Edit
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- Modal -- create-->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Create Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="align-content-center" style="border-color: #005cbf" ; >
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Name</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                       placeholder="" required ng-model="addTask.name">
+                                <label for="exampleFormControlTextarea1" class="font-weight-bold">
+                                    Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                          required ng-model="addTask.Description"></textarea>
+                            </div>
+                            <div class="form-group">
+                               <label for="exampleFormControlInput1" class="font-weight-bold">Assigner</label>
+                                <select ng-model="addTask.Assigner" ng-options="item for item in addTask.Assigner"></select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleFormControlInput1" class="font-weight-bold">Start
+                                        date</label>
+                                    <div class="input-group date" id="datetimepicker1">
+                                        <input type="date" class="form-control" name="addTask.Startdate" id="startdate" placeholder="" ng-model="addTask.Startdate">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleFormControlInput1" class="font-weight-bold">Due date</label>
+                                    <div clas="input-group date" id="datetimepicker2">
+                                        <input type="date" class="form-control"  id="duetdate" placeholder="" ng-model="addTask.Duedate">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Project name</label>
+                                <input type="text" class="form-control" id="projectname" ng-model="addTask.projectname"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Select Colour</label>
+                               <input type="text" class="form-control" ng-model="addTask.Color">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Status</label>
+                                <input type="text" class="form-control" ng-model="addTask.Status">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Tags</label>
+                                <input type="tags" class="form-control" id="tags" placeholder="" required ng-model="addTask.Tags">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" ng-click="saveTask()">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Modal crate-->
+        <!--Modal --delete-->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle1">Delete Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       <h5 style="color: red"> Do you want delte???</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Modal delete-->
+        <!--Modal Edit-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="align-content-center" style="border-color: #005cbf" ; >
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Name</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput2"
+                                       placeholder="" required ng-model="addTask.Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1" class="font-weight-bold">
+                                    Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" required ng-model="addTask.Description"></textarea>
+                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="exampleFormControlInput1" class="font-weight-bold">Assigner</label>-->
+                                <!--<select  name="assigner " class="form-control" ng-model="addTask.Assigner" ng-options="obj for obj in addTask.Assigner">-->
+                                <!--</select>-->
+                            <!--</div>-->
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleFormControlInput1" class="font-weight-bold">Start
+                                        date</label>
+                                    <div class="input-group date" id="datetimepicker3">
+                                        <input type="date" class="form-control" id="startdate1" placeholder="" ng-model="addTask.Startdate">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleFormControlInput1" class="font-weight-bold">Due date</label>
+                                    <div clas="input-group date" id="datetimepicker">
+                                        <input type="date" class="form-control" id="duetdate1" placeholder="" ng-model="addTask.Duedate">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Project name</label>
+                                <input type="text" class="form-control" id="projectname1" placeholder="" required ng-model="addTask.projectname">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Select Colour</label>
+                                <input type="text" class="form-control" ng-model="addTask.Status">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1" class="font-weight-bold">Tags</label>
+                                <input type="tags" class="form-control" id="tags1" placeholder="" required ng-model="addTask.Tags">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Modal edit-->
+
+
+
+    </div>
+</div>
+
+
+
+
+

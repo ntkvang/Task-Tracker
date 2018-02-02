@@ -1,0 +1,12 @@
+body {
+  font-size: font;
+  background: -webkit-linear-gradient(top, #fff, #000);
+  background: -moz-linear-gradient(top, #fff, #000);
+  background: -o-linear-gradient(top, #fff, #000);
+  background: -ms-linear-gradient(top, #fff, #000);
+  background: linear-gradient(to bottom, #fff, #000);
+}
+body nav {
+  height: 100rem;
+/* 1rem = 10px */
+}

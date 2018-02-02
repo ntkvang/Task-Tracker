@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" ng-data-app="myapp">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Task Tracker</title>
+  <link rel="shortcut icon" type="image/x-icon" href="" />
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="node_modules/angular-route/angular-route.js"></script>
+</head>
+<body class="fixed-nav sticky-footer navbar-dark bg-light" id="page-top" style="">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav" style="background-color: #005cbf;color: white;">
+  <a class="navbar-brand" href="index.html">Task Tracker</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar navbar-expand-lg navbar-sidenav" id="exampleAccordion" style="">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <a class="nav-link" href="task.html">
+          <i class="fa fa-fw fa-dashboard"></i>
+          <span class="nav-link-text">Task Management</span>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <a class="nav-link" href="project.html">
+          <i class="fa fa-product-hunt"></i>
+          <span class="nav-link-text">Project Management</span>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <a class="nav-link" href="index.html">
+          <i class="fa fa-fw fa-table"></i>
+          <span class="nav-link-text">Time-line</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav sidenav-toggler">
+      <li class="nav-item">
+        <a class="nav-link text-center" id="sidenavToggler">
+          <i class="fa fa-fw fa-angle-left"></i>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-user-circle fa-2x"></i></i>
+        </a>
+        <!-- /.dropdown-user -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sign in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">or</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sign up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+          <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">home</a>
+        </li>
+        <li class="breadcrumb-item active">Task Management</li>
+      </ol>
+      <h5>Create Task</h5>
+      <hr>
+      <!-- Icon Cards-->
+    <div clas="card mb-3" style="width: 50rem; margin-left: 25rem;">
+      <form class="align-content-center" style="border-color: #005cbf";>
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="font-weight-bold">Name</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1" class="font-weight-bold">Description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+        </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect2" class="font-weight-bold">Assigner</label>
+        <select class="form-control" id="exampleFormControlSelect2">
+          <option>vang</option>
+          <option>Thao</option>
+          <option>ABC</option>
+          <option>DCF</option>
+          <option>BGH</option>
+        </select>
+      </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="exampleFormControlInput1" class="font-weight-bold">Start date</label>
+            <div clas="input-group date" id="datetimepicker1">
+              <input type="date" class="form-control" id="startdate" placeholder="">
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="exampleFormControlInput1" class="font-weight-bold">Due date</label>
+            <div clas="input-group date" id="datetimepicker2">
+              <input type="date" class="form-control" id="duetdate" placeholder="">
+            </div>
+          </div>
+          <!--<script type="text/javascript">-->
+              <!--$('.input-group date').datetimepicker({-->
+                  <!--format: "DD-MM-YYYY"-->
+              <!--});-->
+          <!--</script>-->
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="font-weight-bold">Project name</label>
+          <input type="email" class="form-control" id="projectname" placeholder="" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1" class="font-weight-bold">Select Colour</label>
+            <div class="dropdown">
+              <button class="btn _select_color dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Green<span class="caret _right"></span>
+                <span _text_display="Green" class="color green"></span></button>
+              <ul class="dropdown-menu _select_color_drop" aria-labelledby="dropdownMenu1">
+                <li><span _text_display="Green" class="color green"></span></li>
+                <li><span _text_display="Red" class="color red"></span></li>
+                <li><span _text_display="Yellow" class="color yellow"></span></li>
+                <li><span _text_display="Brown" class="color brown"></span></li>
+                <li><span _text_display="Orange" class="color orange"></span></li>
+                <li><span _text_display="Pink" class="color pink"></span></li>
+                <li><span _text_display="Silver" class="color silver"></span></li>
+                <li><span _text_display="Bule" class="color blue"></span></li>
+                <li><span _text_display="TEAL" class="color TEAL"></span></li>
+                <li><span _text_display="NAVY" class="color NAVY"></span></li>
+                <li><span _text_display="PURPLE" class="color PURPLE"></span></li>
+                <li><span _text_display="OLIVE" class="color OLIVE"></span></li>
+                <li><span _text_display="LIME" class="color LIME"></span></li>
+                <input type="hidden" name="_color" value="Green"></ul>
+            </div>
+          <script language="JavaScript" src="anglarjs/color.js">
+          </script>
+
+          </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1" class="font-weight-bold">Tags</label>
+          <input type="tags" class="form-control" id="tags" placeholder="" required>
+        </div>
+      </form>
+      <div class="card-footer bg-transparent border-primary ">
+        <menu type="toolbar" clas="action-bar" style="float: right;">
+          <button type="button" class="btn btn-success ">
+            <i class="fa fa-plus" aria-hidden="true"></i>Create
+          </button>
+          <button type="button" class="btn btn-danger ">
+            <i class="fa fa-undo" aria-hidden="true"></i>Cancel
+          </button>
+        </menu>
+      </div>
+    </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/src/js/bootstrap-datetimepicker.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+
+  </div>
+  </div>
+</body>
+
+</html>
